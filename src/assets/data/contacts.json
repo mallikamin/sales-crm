@@ -1,0 +1,40 @@
+```json
+[
+  {
+    "id": 1,
+    "name": "Ahmed Khan",
+    "contactNumber": "+92-300-1234567",
+    "linkedinProfile": "https://linkedin.com/in/ahmed-khan",
+    "designation": "Sales Manager",
+    "company": "Tech Solutions Ltd",
+    "whatsapp": "+92-300-1234567",
+    "notes": "Interested in enterprise solutions",
+    "createdDate": "2024-01-15T00:00:00Z",
+    "lastUpdated": "2024-01-15T00:00:00Z"
+  },
+  {
+    "id": 2,
+    "name": "Sarah Ahmad",
+    "contactNumber": "+92-321-9876543",
+    "instagramLink": "https://instagram.com/sarah_ahmad",
+    "facebookLink": "https://facebook.com/sarah.ahmad",
+    "designation": "Marketing Director", 
+    "company": "Digital Marketing Pro",
+    "notes": "Potential partnership opportunity",
+    "createdDate": "2024-01-20T00:00:00Z",
+    "lastUpdated": "2024-01-20T00:00:00Z"
+  },
+  {
+    "id": 3,
+    "name": "Muhammad Ali",
+    "contactNumber": "+92-333-5555666",
+    "linkedinProfile": "https://linkedin.com/in/muhammad-ali-ceo",
+    "designation": "CEO",
+    "company": "StartupXYZ",
+    "whatsapp": "+92-333-5555666",
+    "notes": "Looking for CRM solutions for growing team",
+    "createdDate": "2024-02-01T00:00:00Z",
+    "lastUpdated": "2024-02-01T00:00:00Z"
+  }
+]
+```

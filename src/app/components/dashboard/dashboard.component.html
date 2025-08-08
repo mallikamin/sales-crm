@@ -1,0 +1,97 @@
+```html
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Sales CRM Dashboard</h1>
+    <p>Manage your customer relationships and track interactions</p>
+  </header>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid" *ngIf="kpis$ | async as kpis">
+    <div class="kpi-card">
+      <div class="kpi-value">{{ kpis.totalContacts }}</div>
+      <div class="kpi-label">Total Contacts</div>
+    </div>
+    
+    <div class="kpi-card">
+      <div class="kpi-value">{{ kpis.totalInteractions }}</div>
+      <div class="kpi-label">Total Interactions</div>
+    </div>
+    
+    <div class="kpi-card">
+      <div class="kpi-value">{{ kpis.activeCustomers }}</div>
+      <div class="kpi-label">Active Customers</div>
+    </div>
+    
+    <div class="kpi-card warning">
+      <div class="kpi-value">{{ kpis.emailOnlyContacts }}</div>
+      <div class="kpi-label">Email Only Contacts</div>
+    </div>
+    
+    <div class="kpi-card alert">
+      <div class="kpi-value">{{ kpis.contactsWithoutCalls }}</div>
+      <div class="kpi-label">Ready for Calls</div>
+    </div>
+    
+    <div class="kpi-card">
+      <div class="kpi-value">{{ kpis.averageInteractionsPerCustomer }}</div>
+      <div class="kpi-label">Avg Interactions/Customer</div>
+    </div>
+  </div>
+
+  <!-- Charts Section -->
+  <div class="charts-section">
+    <div class="chart-container">
+      <h3>Interaction Trends</h3>
+      <canvas baseChart
+              [data]="interactionTrendsData"
+              [type]="'line'"
+              [options]="{ responsive: true, maintainAspectRatio: false }">
+      </canvas>
+    </div>
+    
+    <div class="chart-container">
+      <h3>Interactions by Medium</h3>
+      <canvas baseChart
+              [data]="mediumDistributionData"
+              [type]="'doughnut'"
+              [options]="{ responsive: true, maintainAspectRatio: false }">
+      </canvas>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="quick-actions">
+    <button mat-raised-button color="primary" routerLink="/contacts">
+      <mat-icon>person_add</mat-icon>
+      Add New Contact
+    </button>
+    
+    <button mat-raised-button color="accent" routerLink="/interactions">
+      <mat-icon>add_comment</mat-icon>
+      Log Interaction
+    </button>
+    
+    <button mat-raised-button routerLink="/analytics">
+      <mat-icon>analytics</mat-icon>
+      View Analytics
+    </button>
+  </div>
+
+  <!-- Recent Activity -->
+  <div class="recent-activity">
+    <h3>Recent Interactions</h3>
+    <div class="activity-list" *ngIf="interactions$ | async as interactions">
+      <div class="activity-item" *ngFor="let interaction of interactions.slice(0, 5)">
+        <div class="activity-medium">
+          <mat-icon>{{ getMediumIcon(interaction.medium) }}</mat-icon>
+        </div>
+        <div class="activity-details">
+          <div class="activity-customer">{{ interaction.customerName }}</div>
+          <div class="activity-date">{{ interaction.date | date:'short' }}</div>
+          <div class="activity-remarks">{{ interaction.remarks }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
