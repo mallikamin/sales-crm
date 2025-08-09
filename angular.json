@@ -62,7 +62,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "sales-crm:build:production"
+              "buildTarget": "sales-crm:build:production"
             }
           }
         }

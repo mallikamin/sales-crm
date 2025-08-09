@@ -1,4 +1,3 @@
-```json
 {
   "name": "sales-crm",
   "version": "1.0.0",
@@ -7,8 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --configuration production --base-href /sales-crm/",
-    "deploy": "ng build --configuration production --base-href /sales-crm/ && npx angular-cli-ghpages --dir=dist/sales-crm"
-    "deploy:github": "ng build --configuration production --base-href /sales-crm/ && npx angular-cli-ghpages --dir=dist/sales-crm --no-silent"	
+    "deploy": "ng build --configuration production --base-href /sales-crm/ && npx angular-cli-ghpages --dir=dist/sales-crm",
+    "deploy:github": "ng build --configuration production --base-href /sales-crm/ && npx angular-cli-ghpages --dir=dist/sales-crm --no-silent"
   },
   "dependencies": {
     "@angular/animations": "^16.0.0",
@@ -28,8 +27,8 @@
     "zone.js": "^0.13.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^16.0.0",
-    "@angular/cli": "^16.0.0",
+    "@angular-devkit/build-angular": "^20.1.5",
+    "@angular/cli": "^20.1.5",
     "@angular/compiler-cli": "^16.0.0",
     "angular-cli-ghpages": "^1.0.0",
     "typescript": "~5.0.0"
