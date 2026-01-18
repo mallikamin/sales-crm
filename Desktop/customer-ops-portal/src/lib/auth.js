@@ -3,7 +3,6 @@ import { onAuthStateChanged, signInWithEmailAndPassword, signOut as firebaseSign
 import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { auth, db } from './firebase'
 
-// Normalize role to lowercase
 function normalizeRole(role) {
   if (!role) return 'customer'
   return role.toLowerCase()
@@ -35,11 +34,7 @@ export function useAuthUser() {
             role: normalizeRole(data.role)
           })
         } else {
-          const placeholder = { 
-            role: 'customer', 
-            name: u.email, 
-            customerId: null 
-          }
+          const placeholder = { role: 'customer', name: u.email, customerId: null }
           await setDoc(ref, placeholder, { merge: true })
           setProfile(placeholder)
         }

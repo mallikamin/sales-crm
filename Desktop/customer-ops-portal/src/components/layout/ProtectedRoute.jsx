@@ -9,7 +9,13 @@ export default function ProtectedRoute({ children, allowRoles }) {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
-        <div className="w-4 h-4 border border-neutral-900 border-t-transparent animate-spin" />
+        <div className="text-center">
+          <div className="relative w-12 h-12 mx-auto">
+            <div className="absolute inset-0 border-2 border-orbit-200 rounded-full" />
+            <div className="absolute inset-0 border-2 border-orbit-900 rounded-full border-t-transparent animate-spin" />
+          </div>
+          <p className="mt-6 text-xs tracking-widest text-orbit-400 uppercase">Loading</p>
+        </div>
       </div>
     )
   }

@@ -17,18 +17,12 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!email.trim() || !password) return
-
     setBusy(true)
     setError('')
-
     try {
       await signIn(email.trim(), password)
     } catch (err) {
-      if (err.code === 'auth/invalid-credential') {
-        setError('Invalid email or password')
-      } else {
-        setError('Unable to sign in')
-      }
+      setError(err.code === 'auth/invalid-credential' ? 'Invalid email or password' : 'Unable to sign in')
     } finally {
       setBusy(false)
     }
@@ -37,97 +31,52 @@ export default function Login() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="w-4 h-4 border border-neutral-900 border-t-transparent animate-spin" />
+        <div className="w-8 h-8 border border-orbit-900 border-t-transparent rounded-full animate-spin" />
       </div>
     )
   }
 
   return (
     <div className="min-h-screen bg-white flex">
-      {/* Left - Branding */}
-      <div className="hidden lg:flex lg:w-1/2 bg-neutral-50 items-center justify-center p-16">
-        <div className="max-w-md">
-          <h1 className="text-5xl font-extralight tracking-tight text-neutral-900 leading-tight">
-            CUSTOMER<br />OPS PORTAL
-          </h1>
-          <p className="mt-8 text-sm text-neutral-500 leading-relaxed tracking-wide">
-            Order management, production planning, and client collaboration — unified in one elegant workspace.
-          </p>
-          <div className="mt-16 flex items-center gap-8 text-2xs tracking-widest text-neutral-400 uppercase">
-            <span>Orders</span>
-            <span>·</span>
-            <span>Production</span>
-            <span>·</span>
-            <span>Collaboration</span>
-          </div>
+      <div className="hidden lg:block lg:w-1/2 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=1200&h=1600&fit=crop" alt="Denim" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-16">
+          <h1 className="text-5xl font-extralight text-white tracking-tight leading-tight">Premium Denim.<br />Elevated Process.</h1>
+          <p className="mt-6 text-sm text-white/70 max-w-md leading-relaxed">Orbit connects manufacturers with retailers through a seamless B2B experience.</p>
         </div>
       </div>
-
-      {/* Right - Login Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-16">
         <div className="w-full max-w-sm animate-in">
-          {/* Mobile Logo */}
-          <div className="lg:hidden mb-16 text-center">
-            <h1 className="text-2xl font-extralight tracking-tight">CUSTOMER OPS</h1>
+          <div className="mb-16 flex items-center gap-3">
+            <div className="w-12 h-12 bg-orbit-900 rounded-full flex items-center justify-center">
+              <span className="text-white text-lg font-semibold">O</span>
+            </div>
+            <span className="text-2xl font-light tracking-tight">Orbit</span>
           </div>
-
           <div className="mb-12">
-            <h2 className="text-2xl font-light tracking-tight">Sign in</h2>
-            <p className="mt-2 text-sm text-neutral-500">
-              Enter your credentials to continue
-            </p>
+            <h2 className="text-3xl font-extralight tracking-tight">Welcome</h2>
+            <p className="mt-3 text-sm text-orbit-500">Sign in to your account to continue</p>
           </div>
-
           <form onSubmit={handleSubmit} className="space-y-8">
             <div>
-              <label className="block text-2xs font-medium tracking-widest text-neutral-500 uppercase mb-3">
-                Email
-              </label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="input-elite"
-                placeholder="you@company.com"
-                disabled={busy}
-              />
+              <label className="section-label mb-3 block">Email</label>
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="input-elite" placeholder="you@company.com" disabled={busy} />
             </div>
-
             <div>
-              <label className="block text-2xs font-medium tracking-widest text-neutral-500 uppercase mb-3">
-                Password
-              </label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="input-elite"
-                placeholder="••••••••"
-                disabled={busy}
-              />
+              <label className="section-label mb-3 block">Password</label>
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input-elite" placeholder="••••••••" disabled={busy} />
             </div>
-
-            {error && (
-              <p className="text-sm text-red-600">{error}</p>
-            )}
-
-            <button
-              type="submit"
-              disabled={busy}
-              className="btn-primary w-full mt-4"
-            >
-              {busy ? 'Signing in...' : 'Continue'}
-            </button>
+            {error && <p className="text-sm text-red-600">{error}</p>}
+            <button type="submit" disabled={busy} className="btn-primary w-full">{busy ? 'Signing in...' : 'Continue'}</button>
           </form>
-
-          {/* Demo accounts */}
-          <div className="mt-16 pt-8 border-t border-neutral-100">
-            <p className="text-2xs tracking-widest text-neutral-400 uppercase mb-4">Demo Accounts</p>
-            <div className="space-y-2 text-xs text-neutral-500">
-              <p><span className="text-neutral-900">Admin:</span> mallikamin@gmail.com</p>
-              <p><span className="text-neutral-900">Staff:</span> staff@customerops.com</p>
-              <p><span className="text-neutral-900">Customer:</span> customer@customerops.com</p>
-              <p className="text-neutral-400 mt-2">Password: [role]123</p>
+          <div className="mt-16 pt-8 border-t border-orbit-100">
+            <p className="section-label mb-4">Demo Accounts</p>
+            <div className="space-y-2 text-xs">
+              <p><span className="text-orbit-900">Admin:</span> <span className="text-orbit-500">mallikamin@gmail.com</span></p>
+              <p><span className="text-orbit-900">Staff:</span> <span className="text-orbit-500">staff@customerops.com</span></p>
+              <p><span className="text-orbit-900">Customer:</span> <span className="text-orbit-500">customer@customerops.com</span></p>
+              <p className="text-orbit-400 mt-3">Password: admin123 / staff123 / customer123</p>
             </div>
           </div>
         </div>

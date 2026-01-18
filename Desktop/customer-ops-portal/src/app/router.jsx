@@ -6,17 +6,18 @@ import Dashboard from './routes/Dashboard'
 import Orders from './routes/Orders'
 import OrderDetail from './routes/OrderDetail'
 import OrderCreate from './routes/OrderCreate'
-import Customers from './routes/Customers'
 import Products from './routes/Products'
+import ProductDetail from './routes/ProductDetail'
+import Showcase from './routes/Showcase'
+import ShowcaseDetail from './routes/ShowcaseDetail'
+import Customers from './routes/Customers'
 import Production from './routes/Production'
 import ProtectedRoute from '../components/layout/ProtectedRoute'
 import { useAuthUser } from '../lib/auth'
 
 function RoleRedirect() {
   const { profile, loading } = useAuthUser()
-  
   if (loading) return null
-  
   const role = profile?.role || 'customer'
   if (role === 'admin' || role === 'staff') {
     return <Navigate to="/orders" replace />
@@ -35,8 +36,11 @@ const router = createHashRouter([
       { path: 'orders', element: <Orders /> },
       { path: 'orders/new', element: <OrderCreate /> },
       { path: 'orders/:orderId', element: <OrderDetail /> },
+      { path: 'products', element: <Products /> },
+      { path: 'products/:productId', element: <ProductDetail /> },
+      { path: 'showcase', element: <Showcase /> },
+      { path: 'showcase/:postId', element: <ShowcaseDetail /> },
       { path: 'customers', element: <ProtectedRoute allowRoles={['admin', 'staff']}><Customers /></ProtectedRoute> },
-      { path: 'products', element: <ProtectedRoute allowRoles={['admin', 'staff']}><Products /></ProtectedRoute> },
       { path: 'production', element: <ProtectedRoute allowRoles={['admin', 'staff']}><Production /></ProtectedRoute> },
     ],
   },
