@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply font-sans text-neutral-900 bg-white;
+  }
+
+  /* Elite typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-light tracking-tight;
+  }
+
+  /* Prevent iOS zoom on input focus */
+  @media (max-width: 640px) {
+    input, textarea, select {
+      font-size: 16px;
+    }
+  }
+}
+
+@layer components {
+  /* Elite button styles */
+  .btn-primary {
+    @apply px-6 py-3 bg-neutral-900 text-white text-xs font-medium tracking-widest uppercase;
+    @apply hover:bg-neutral-800 transition-all duration-300;
+    @apply disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 border border-neutral-900 text-neutral-900 text-xs font-medium tracking-widest uppercase;
+    @apply hover:bg-neutral-900 hover:text-white transition-all duration-300;
+  }
+
+  .btn-ghost {
+    @apply px-4 py-2 text-xs font-medium tracking-wide text-neutral-500;
+    @apply hover:text-neutral-900 transition-colors duration-200;
+  }
+
+  /* Elite input styles */
+  .input-elite {
+    @apply w-full px-0 py-3 bg-transparent border-0 border-b border-neutral-200;
+    @apply text-sm text-neutral-900 placeholder:text-neutral-400;
+    @apply focus:outline-none focus:border-neutral-900 transition-colors duration-300;
+  }
+
+  /* Elite card */
+  .card-elite {
+    @apply bg-white border border-neutral-100;
+  }
+
+  /* Status badges - minimal */
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 text-2xs font-medium tracking-wider uppercase;
+  }
+}
+
+@layer utilities {
+  .animate-in {
+    animation: fadeIn 0.5s ease-out, slideUp 0.4s ease-out;
+  }
+}
